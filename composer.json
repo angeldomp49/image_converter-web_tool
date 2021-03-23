@@ -1,0 +1,15 @@
+{
+    "name":"pixelsiete/to-webp",
+    "description": "convert any image to webp format",
+    "require": {
+        "rosell-dk/webp-convert": "*"
+    },
+    "autoload":{
+        "psr-4": {
+            "MakechTec\\Nanokit\\": "vendor/makechtec/nanokit"
+        },
+        "classmap": [ 
+            "src" 
+        ]
+    }
+}
