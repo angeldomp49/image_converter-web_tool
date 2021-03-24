@@ -2,6 +2,7 @@
 namespace Pixelsiete\Towebp;
 use Pixelsiete\Towebp\Interfaces\ImgFileContainer;
 use Pixelsiete\Towebp\Converter;
+use Logger;
 
 class WebpContainer implements ImgFileContainer{
     public Array $imgFiles;
@@ -28,8 +29,7 @@ class WebpContainer implements ImgFileContainer{
         $convertedImgFiles = [];
 
         foreach ($this->imgFiles as $imgFile ) {
-            $newFilename = str_replace( $source, $dist, $imgFile->generalFile->fileInfo->getFilename() );
-            $convertedImgFiles[] = $converter->convert( $imgFile, $newFilename );
+            $convertedImgFiles[] = $converter->convert( $imgFile, $source, $dist );
         }
 
         $this->imgFiles = $convertedImgFiles;

@@ -3,6 +3,7 @@ namespace Pixelsiete\Towebp;
 
 use Pixelsiete\Towebp\Interfaces\File;
 use MakechTec\Nanokit\Url\Parser;
+use Logger;
 
 class FileGenerator{
     private Array $files;

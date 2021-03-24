@@ -36,6 +36,7 @@ class ComposerStaticInit29cdf5e7869d6703598cc5f92573c501
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Entry' => __DIR__ . '/../..' . '/src/Entry.php',
+        'Logger' => __DIR__ . '/../..' . '/src/Logger.php',
         'Pixelsiete\\Towebp\\FileGenerator' => __DIR__ . '/../..' . '/src/classes/FileGenerator.php',
         'Pixelsiete\\Towebp\\GeneralFile' => __DIR__ . '/../..' . '/src/classes/GeneralFile.php',
         'Pixelsiete\\Towebp\\ImgFile' => __DIR__ . '/../..' . '/src/classes/ImageFile.php',

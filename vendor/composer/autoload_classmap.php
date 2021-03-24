@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'Entry' => $baseDir . '/src/Entry.php',
+    'Logger' => $baseDir . '/src/Logger.php',
     'Pixelsiete\\Towebp\\FileGenerator' => $baseDir . '/src/classes/FileGenerator.php',
     'Pixelsiete\\Towebp\\GeneralFile' => $baseDir . '/src/classes/GeneralFile.php',
     'Pixelsiete\\Towebp\\ImgFile' => $baseDir . '/src/classes/ImageFile.php',

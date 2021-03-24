@@ -17,7 +17,7 @@ class Test {
         $webpContainer->importImgFiles( $source );
         
         $webpConverter = new WebpConverter();
-        $webpContainer->transformImgFiles( $webpConverter, 'images/src', $dist );
+        $webpContainer->transformImgFiles( $webpConverter, $source, $dist );
         
     }
 }
