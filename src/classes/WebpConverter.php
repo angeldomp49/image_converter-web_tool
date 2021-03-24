@@ -15,8 +15,6 @@ class WebpConverter {
 
         $filenameDistNewExtension = str_replace( $fileExtension, self::FILE_EXTENSION, $filenameDist );
 
-        Logger::log( "File to create: " . $filenameDistNewExtension );
-        Logger::log( "path destination: " . $filePathDist );
         mkdir( $filePathDist, 0777, true );
         /////////////////at this time we dont use the export function because it do this.//////////////////////
         imagewebp( $imageFile->handler, $filenameDistNewExtension );

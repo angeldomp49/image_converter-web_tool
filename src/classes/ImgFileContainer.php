@@ -1,10 +1,9 @@
 <?php
 namespace Pixelsiete\Towebp;
-use Pixelsiete\Towebp\Interfaces\ImgFileContainer;
 use Pixelsiete\Towebp\Converter;
 use Logger;
 
-class WebpContainer implements ImgFileContainer{
+class ImgFileContainer{
     public Array $imgFiles;
     public FileGenerator $fileGenerator;
 

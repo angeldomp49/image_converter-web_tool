@@ -1,6 +1,6 @@
 <?php
 
-use Pixelsiete\Towebp\{WebpContainer, WebpConverter, FileGenerator};
+use Pixelsiete\Towebp\{ImgFileContainer, WebpConverter, FileGenerator};
 
 class Test {
     public static function main(){
@@ -12,7 +12,7 @@ class Test {
         $source = rightPath( $source );
         $dist = rightPath( $dist );
 
-        $webpContainer = new WebpContainer();
+        $webpContainer = new ImgFileContainer();
         $webpContainer->setFileGenerator( $fileGenerator );
         $webpContainer->importImgFiles( $source );
         
