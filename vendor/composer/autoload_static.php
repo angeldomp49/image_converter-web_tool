@@ -7,6 +7,11 @@ namespace Composer\Autoload;
 class ComposerStaticInit29cdf5e7869d6703598cc5f92573c501
 {
     public static $prefixLengthsPsr4 = array (
+        'P' => 
+        array (
+            'Pixelsiete\\Towebp\\Interfaces\\' => 29,
+            'Pixelsiete\\Towebp\\' => 18,
+        ),
         'M' => 
         array (
             'MakechTec\\Nanokit\\' => 18,
@@ -14,6 +19,14 @@ class ComposerStaticInit29cdf5e7869d6703598cc5f92573c501
     );
 
     public static $prefixDirsPsr4 = array (
+        'Pixelsiete\\Towebp\\Interfaces\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/interfaces',
+        ),
+        'Pixelsiete\\Towebp\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/classes',
+        ),
         'MakechTec\\Nanokit\\' => 
         array (
             0 => __DIR__ . '/..' . '/makechtec/nanokit',
@@ -22,9 +35,17 @@ class ComposerStaticInit29cdf5e7869d6703598cc5f92573c501
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'Pixelsiete\\Towebp\\ImgFile' => __DIR__ . '/../..' . '/src/ImgFile.php',
-        'Pixelsiete\\Towebp\\NameParser' => __DIR__ . '/../..' . '/src/NameParser.php',
-        'Pixelsiete\\Towebp\\Towebp' => __DIR__ . '/../..' . '/src/Towebp.php',
+        'Entry' => __DIR__ . '/../..' . '/src/Entry.php',
+        'Pixelsiete\\Towebp\\FileGenerator' => __DIR__ . '/../..' . '/src/classes/FileGenerator.php',
+        'Pixelsiete\\Towebp\\GeneralFile' => __DIR__ . '/../..' . '/src/classes/GeneralFile.php',
+        'Pixelsiete\\Towebp\\ImgFile' => __DIR__ . '/../..' . '/src/classes/ImageFile.php',
+        'Pixelsiete\\Towebp\\ImgType' => __DIR__ . '/../..' . '/src/interfaces/ImgType.php',
+        'Pixelsiete\\Towebp\\Interfaces\\Converter' => __DIR__ . '/../..' . '/src/interfaces/Converter.php',
+        'Pixelsiete\\Towebp\\Interfaces\\File' => __DIR__ . '/../..' . '/src/interfaces/File.php',
+        'Pixelsiete\\Towebp\\Interfaces\\ImgFileContainer' => __DIR__ . '/../..' . '/src/interfaces/ImgFileContainer.php',
+        'Pixelsiete\\Towebp\\WebpContainer' => __DIR__ . '/../..' . '/src/classes/WebpContainer.php',
+        'Pixelsiete\\Towebp\\WebpConverter' => __DIR__ . '/../..' . '/src/classes/WebpConverter.php',
+        'Test' => __DIR__ . '/../..' . '/src/Test.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
