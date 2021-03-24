@@ -6,8 +6,7 @@ use Logger;
 class ImgFileContainer{
     public Array $imgFiles;
     public FileGenerator $fileGenerator;
-
-    
+    public String $sourceDirectory;
 
     public function importImgFiles( String $directory ){
         $files = $this->fileGenerator->importFiles( $directory );
@@ -28,10 +27,15 @@ class ImgFileContainer{
         $convertedImgFiles = [];
 
         foreach ($this->imgFiles as $imgFile ) {
+
             $convertedImgFiles[] = $converter->convert( $imgFile, $source, $dist );
         }
 
         $this->imgFiles = $convertedImgFiles;
+    }
+
+    public function changePathName( $pathName, $newDir, $oldDir, $extension ){
+
     }
 
     public function isValidConverter( $converter ){

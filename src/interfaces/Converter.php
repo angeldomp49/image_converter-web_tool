@@ -2,5 +2,5 @@
 namespace Pixelsiete\Towebp\Interfaces;
 
 interface Converter{
-    public function convert( $imgFile );
+    public function convert( $imgFile, $pathName );
 }

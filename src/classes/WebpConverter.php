@@ -1,6 +1,6 @@
 <?php
 namespace Pixelsiete\Towebp;
-use Logger;
+use MakechTec\Nanokit\Url\Parser;
 
 class WebpConverter {
     public const FILE_EXTENSION = '.webp';
@@ -20,7 +20,36 @@ class WebpConverter {
         imagewebp( $imageFile->handler, $filenameDistNewExtension );
     }
 
+    public function convert2( $imageFile, $pathName ){
+        $path = $this->removeFinalSlug( $pathName );
+
+        $this->isValidImgFile( $imageFile );
+        $this->createDirIfNotExists( $path );
+        imagewebp( $imageFile->handler, $pathName );
+    }
+
     public function isValidImgFile( $imageFile ){
         //TO DO CODE
+    }
+
+    public function createDirIfNotExists( $path ){
+        if( !is_dir( $path ) ){
+            mkdir( $path, 0777, true );
+        }
+    }
+
+    public function removeFinalSlug( $uri ){
+        $uriSlashes = Parser::equalSlashes( '/', $uri );
+        $slugs = Parser::slugsFromUri( $uri );
+        array_pop( $slugs );
+        $newUri = Parser::uriFromSlugs( $slugs );
+        $newUri = Parser::equalSlashes( '\\', $newUri );
+        return $newUri;
+    }
+
+    public function convertAll( ImgFileContainer $imgFileContainer, $destinationDirectory ){
+        foreach ($imgFileContainer->imgFiles as $imgFile ) {
+            $this->convert( $imgFile, $imgFileContainer->sourceDirectory );
+        }
     }
 }
