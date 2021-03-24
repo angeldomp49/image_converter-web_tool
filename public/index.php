@@ -2,10 +2,14 @@
 include( '../vendor/autoload.php' );
 include('../vendor/makechtec/nanokit/Util/functions.php');
 
-use Pixelsiete\Towebp\{Towebp, ImgFile};
+use Pixelsiete\Towebp\{Towebp, ImgFile, NameParser};
+use MakechTec\Nanokit\Url\Parser;
 
-$input = rightPath( "images/src/uno.jpg" );
-$output = rightPath( "images/dist/uno.webp" );
+$input = "images/src/";
+$output = "images/dist/";
 
-$towebp = new Towebp( $input, $output );
-$towebp->convert();
+$m = new NameParser( rightPath($input), $output );
+$results = $m->getDirContents( rightPath($input));
+
+echo( var_dump( $results ) );
+

@@ -111,6 +111,38 @@ class Parser{
         return $newStr;
     }
 
+    public static function removeAroundChars( $str, $start, $end ){
+        $newStr = "";
+        $newStr = self::removeStartChar( $str, $start );
+        $newStr = self::removeEndChar( $newStr, $end );
+    }
+    
+    public static function removeStartChar( $str, $start ){
+        if( self::isStartChar( $str, $start ) ){
+            return substr( $str, 1, strlen( $str ) );
+        }
+        else{
+            return $str;
+        }
+    }
+
+    public static function isStartChar( $str, $start ){
+        return ( preg_match( $start, $str ) ) ? true : false; 
+    }
+
+    public static function removeEndChar( $str, $end ){
+        if( self::isEndChar( $str, $end ) ){
+            return substr( $str, 0, strlen( $str ) -1 );
+        }
+        else{
+            return $str;
+        }
+    }
+
+    public static function isEndChar( $str, $end ){
+        return ( preg_match( $end, $str ) ) ? true : false;
+    }
+
     public static function removeStartSlash( $str ){
         if( self::isStartSlash( $str ) ){
             return substr( $str, 1, strlen( $str ) );

@@ -1,5 +1,5 @@
 {
-    "name":"pixelsiete/to-webp",
+    "name":"makechtec/image-conversor",
     "description": "convert any image to webp format",
     "require": {
         "rosell-dk/webp-convert": "*"

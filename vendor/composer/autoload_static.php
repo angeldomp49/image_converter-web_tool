@@ -7,38 +7,23 @@ namespace Composer\Autoload;
 class ComposerStaticInit29cdf5e7869d6703598cc5f92573c501
 {
     public static $prefixLengthsPsr4 = array (
-        'W' => 
-        array (
-            'WebPConvert\\' => 12,
-        ),
         'M' => 
         array (
             'MakechTec\\Nanokit\\' => 18,
         ),
-        'I' => 
-        array (
-            'ImageMimeTypeGuesser\\' => 21,
-        ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'WebPConvert\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/rosell-dk/webp-convert/src',
-        ),
         'MakechTec\\Nanokit\\' => 
         array (
             0 => __DIR__ . '/..' . '/makechtec/nanokit',
-        ),
-        'ImageMimeTypeGuesser\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/rosell-dk/image-mime-type-guesser/src',
         ),
     );
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Pixelsiete\\Towebp\\ImgFile' => __DIR__ . '/../..' . '/src/ImgFile.php',
+        'Pixelsiete\\Towebp\\NameParser' => __DIR__ . '/../..' . '/src/NameParser.php',
         'Pixelsiete\\Towebp\\Towebp' => __DIR__ . '/../..' . '/src/Towebp.php',
     );
 

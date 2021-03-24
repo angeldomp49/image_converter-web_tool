@@ -1,0 +1,2 @@
+ya tenemos la funcion que nos devuelve un array de los nombres de archivos de directorios y subdirectorios, esto con sus rutas absolutas,
+también modificamos la clase Parser de nanokit, falta recorrer el arreglo y crear una copia en webp de cada archivo en la carpeta de salida, tambi+en falta renombrar la clase nameparser y organizar el código además de integrar los cambios hecho en nanokit
