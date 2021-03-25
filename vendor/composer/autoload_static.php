@@ -36,14 +36,11 @@ class ComposerStaticInit29cdf5e7869d6703598cc5f92573c501
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Entry' => __DIR__ . '/../..' . '/src/Entry.php',
-        'Logger' => __DIR__ . '/../..' . '/src/Logger.php',
         'Pixelsiete\\Towebp\\FileGenerator' => __DIR__ . '/../..' . '/src/classes/FileGenerator.php',
         'Pixelsiete\\Towebp\\GeneralFile' => __DIR__ . '/../..' . '/src/classes/GeneralFile.php',
         'Pixelsiete\\Towebp\\ImgFile' => __DIR__ . '/../..' . '/src/classes/ImageFile.php',
         'Pixelsiete\\Towebp\\ImgFileContainer' => __DIR__ . '/../..' . '/src/classes/ImgFileContainer.php',
-        'Pixelsiete\\Towebp\\ImgType' => __DIR__ . '/../..' . '/src/interfaces/ImgType.php',
         'Pixelsiete\\Towebp\\Interfaces\\Converter' => __DIR__ . '/../..' . '/src/interfaces/Converter.php',
-        'Pixelsiete\\Towebp\\Interfaces\\File' => __DIR__ . '/../..' . '/src/interfaces/File.php',
         'Pixelsiete\\Towebp\\WebpConverter' => __DIR__ . '/../..' . '/src/classes/WebpConverter.php',
         'Test' => __DIR__ . '/../..' . '/src/Test.php',
     );

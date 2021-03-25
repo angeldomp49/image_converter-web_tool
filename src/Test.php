@@ -1,23 +1,40 @@
 <?php
 
-use Pixelsiete\Towebp\{ImgFileContainer, WebpConverter, FileGenerator};
+use Pixelsiete\Towebp\{ImgFileContainer, WebpConverter, FileGenerator, GeneralFile};
+use \Exception;
 
 class Test {
-    public static function main(){
+    public static function main2(){
         $source = "images/src";
         $dist = "images/dist";
-
-        $fileGenerator = new FileGenerator();
-
         $source = rightPath( $source );
         $dist = rightPath( $dist );
 
-        $webpContainer = new ImgFileContainer();
-        $webpContainer->setFileGenerator( $fileGenerator );
-        $webpContainer->importImgFiles( $source );
+        $webpContainer = new ImgFileContainer( $source );
+        WebpConverter::convertAll( $webpContainer, $dist );
         
-        $webpConverter = new WebpConverter();
-        $webpContainer->transformImgFiles( $webpConverter, $source, $dist );
+    }
+
+    public static function main(){
+
+        $fakeSource = "test/src";
+        $fakeDest = "test/dist";
+        
+        try{
+            $fileGen = new FileGenerator();
+            
+            $generalFile = new GeneralFile( 'test/src/test.png' );
+            $generalFile->attemptOpenFileObject();
+        
+            $fileGen = new FileGenerator();
+            $fileGen->importFiles();
+        
+            $imgFile = new ImgFile( $generalFile );
+            $imgFile->openHandler();
+        }
+        catch( Exception $e ){
+            echo( $e->getMessage() );
+        }
         
     }
 }

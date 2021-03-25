@@ -5,6 +5,16 @@ use MakechTec\Nanokit\Url\Parser;
 class WebpConverter {
     public const FILE_EXTENSION = '.webp';
 
+    public static function convertAll( ImgFileContainer $imgFileContainer, String $destinationDirectory ){
+        $instance = new WebpConverter();
+
+
+        foreach ($imgFileContainer->imgFiles as $imgFile ) {
+            $newFileName = $instance->createNewName( $imgFile, $imgFileContainer->sourceDirectory, $destinationDirectory, self::FILE_EXTENSION );
+            $instance->convert( $imgFile, $newFileName );
+        }
+    }
+/*
     public function convert( $imageFile, $source, $dist ){
         $this->isValidImgFile( $imageFile );
 
@@ -19,17 +29,27 @@ class WebpConverter {
         /////////////////at this time we dont use the export function because it do this.//////////////////////
         imagewebp( $imageFile->handler, $filenameDistNewExtension );
     }
+    */
 
-    public function convert2( $imageFile, $pathName ){
-        $path = $this->removeFinalSlug( $pathName );
+    public function convert( ImgFile $imageFile, String $pathName ){
+        $this->createContainerDir( $pathName );
+        $imageFile->openHandler();
 
-        $this->isValidImgFile( $imageFile );
-        $this->createDirIfNotExists( $path );
         imagewebp( $imageFile->handler, $pathName );
+
+        $imageFile->closeHandler();
     }
 
-    public function isValidImgFile( $imageFile ){
-        //TO DO CODE
+    public function createNewName( ImgFile $imgFile, String $sourceDir, String $destDir, String $newExtension){
+        $oldExtension = '.' . $imgFile->generalFile->fileInfo->getExtension();
+        $newFileName = str_replace( $sourceDir, $destDir, $imgFile->generalFile->fileInfo->getPathname() );
+        $newFileName = str_replace( $oldExtension, $newExtension, $newFileName );
+        return $newFileName;
+    }
+
+    public function createContainerDir( $pathName ){
+        $path = $this->removeFinalSlug( $pathName );
+        $this->createDirIfNotExists( $path );
     }
 
     public function createDirIfNotExists( $path ){
@@ -47,9 +67,4 @@ class WebpConverter {
         return $newUri;
     }
 
-    public function convertAll( ImgFileContainer $imgFileContainer, $destinationDirectory ){
-        foreach ($imgFileContainer->imgFiles as $imgFile ) {
-            $this->convert( $imgFile, $imgFileContainer->sourceDirectory );
-        }
-    }
 }

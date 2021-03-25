@@ -9,6 +9,10 @@ class FileGenerator{
     private Array $files;
 
     public function importFiles( String $directory ){
+        if( !is_dir( $directory ) ){
+            throw new Exception( "Directory not exists: " . $directory );
+        }
+
         $fileNames = $this->importFileNamesRecursively( $directory );
         $fileObjects = [];
 
@@ -19,26 +23,11 @@ class FileGenerator{
         return $fileObjects;
     }
 
-    public function exportFiles( String $directory, Array $files ){
-        foreach ($files as $file ) {
-            $this->exportFile( $file );
-        }
-    }
-
-    public function exportFile(){
-        //TODO CODE
-    }
-
-    public function isValidFile( $file ){
-        if(  !($file instanceof File) ){
-            throw new Exception( "invalid file in " . __CLASS__ . " at function " . __FUNCTION__ );
-        }
-    }
-
     public function importFileNamesRecursively( $dir, &$results = array() ) {
         $directory = Parser::removeEndChar( $dir, '/\\\\$/' );
         $directory = Parser::removeEndChar( $directory, '/\/$/' );
 
+        $this->attemptScandir( $directory );
         $files = scandir($directory);
         $files = $this->removeDots( $files );
     
@@ -46,7 +35,6 @@ class FileGenerator{
 
             $absFilename = $directory . Parser::SLASH . $file;
             $absFilename = Parser::equalSlashes( $directory, $absFilename );
-
 
             if( is_dir( $absFilename ) ){
                 $this->importFileNamesRecursively( $absFilename,  $results);
@@ -59,9 +47,24 @@ class FileGenerator{
         return $results;
     }
 
+    public function attemptScandir( $dir ){
+        $result = null;
+
+        try{
+            $result = scandir( $dir );
+        }
+        catch( Exception $e ){
+            throw new Exception( "Error it's not a directory: " . $dir );
+        }
+
+        if( $result == false ){
+            throw new Exception( "Error reading file names in directory: " . $dir );
+        }
+    }
+
     public function removeDots( Array $arr ){
         $cleaned = [];
-        foreach ($arr as $key => $value) {
+        foreach ($arr as $value) {
             if( $value != '.' && $value != '..' ){
                 $cleaned[] = $value;
             }
