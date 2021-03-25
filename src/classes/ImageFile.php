@@ -1,6 +1,9 @@
 <?php
 namespace Pixelsiete\Towebp;
 
+use \Exception;
+use MakechTec\Nanokit\Util\Logger;
+
 class ImgFile{
     public GeneralFile $generalFile;
     public $handler;
@@ -10,27 +13,27 @@ class ImgFile{
     }
 
     public function openHandler(){
-        $this->generalFile->openFileObject();
+        $fileStream = $this->generalFile->read();
 
-        $this->fileIsReadable( $this->generalFile );
-        $fileStream = $this->generalFile->fileObject->fread( $this->generalFile->fileInfo->getSize() );
+        if( $this->isImageable( $fileStream, $this->generalFile) ){
+            $this->handler = imagecreatefromstring( $fileStream );
 
-        $this->isImageable();
-        $this->handler = imagecreatefromstring( $fileStream );
-
-        $fileStream = null;
-        $this->generalFile->closeFileObject();
-    }
-
-    public function fileIsReadable( GeneralFile $generalFile ){
-        if( !($generalFile->fileObject->fread( $generalFile->fileInfo->getSize()) ) ){
-            throw new Exception( 'Failed read file: ' . $this->generalFile->fileInfo->getPathname() );
+            $fileStream = null;
+            $this->generalFile->closeFileObject();
+            return true;
+        }
+        else{
+            return false;
         }
     }
 
     public function isImageable( $fileStream, GeneralFile $generalFile ){
         if( imagecreatefromstring( $fileStream ) == false ){
-            Throw new Exception( 'Failed to create image handler from file stream: ' . $generalFile->fileInfo->getPathname() );
+            trigger_error( 'Failed to create image handler from file stream: ' . $generalFile->fileInfo->getPathname(), E_USER_WARNING );
+            return false;
+        }
+        else{
+            return true;
         }
     }
 
@@ -39,14 +42,7 @@ class ImgFile{
     }
 
     public static function toImgFile( GeneralFile $generalFile ){
-        if( self::isImage() ){
-            return new ImgFile( $generalFile );
-        }
-    }
-
-    public static function isImage(){
-        // TO DO CODE
-        return true;
+        return new ImgFile( $generalFile );
     }
 
 }

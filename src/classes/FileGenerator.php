@@ -3,6 +3,7 @@ namespace Pixelsiete\Towebp;
 
 use Pixelsiete\Towebp\Interfaces\File;
 use MakechTec\Nanokit\Url\Parser;
+use \Exception;
 use Logger;
 
 class FileGenerator{

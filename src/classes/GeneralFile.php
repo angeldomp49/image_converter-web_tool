@@ -17,9 +17,14 @@ class GeneralFile{
         $this->fileInfo = new SplFileInfo( $filePath );
     }
 
-    public function attemptOpenFileObject(){
+    public function read(){
+        $fileObject = $this->fileInfo->openFile();
+        return $fileObject->fread( $fileObject->getSize() );
+    }
+
+    public function fileCanBeOpened(){
         try{
-            $this->openFileObject();
+            $this->fileObject = $this->fileInfo->openFile();
         }
         catch( \RuntimeException $re ){
             Throw new Exception( 'Failed to open FileObject with current permissions of: ' . $this->fileInfo->getPathname(), 1, $re );
@@ -27,13 +32,16 @@ class GeneralFile{
         catch( Exception $e ){
             Throw new Exception( 'Failed to open FileObject of : ' . $this->fileInfo->getPathname() );
         }
+        unset($this->fileObject);
     }
 
-    public function openFileObject(){
-        $this->fileObject = $this->fileInfo->openFile();
+    public function fileIsReadable(){
+        if( ($this->fileObject->fread( $this->fileInfo->getSize())) == false ){
+            throw new Exception( 'Failed read file: ' . $this->fileInfo->getPathname() );
+        }
     }
 
     public function closeFileObject(){
-        $this->fileObject = null;
+        unset($this->fileObject);
     }
 }
