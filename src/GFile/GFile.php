@@ -6,8 +6,8 @@ use \SplFileObject;
 use \Exception;
 
 abstract class GFile{
-    public SplFileInfo $fileInfo;
-    public SplFileObject $fileObject;
+    public $fileInfo;
+    public $fileObject;
 
     public function __construct( String $filePath ){
         if( !file_exists( $filePath ) ){

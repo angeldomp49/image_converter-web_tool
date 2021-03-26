@@ -7,8 +7,8 @@ use MakechTec\Nanokit\Util\Logger;
 use MakechTec\ImageConverter\GFile\GFile;
 
 abstract class GDirectory{
-    private Array $files;
-    public String $sourceDirectory;
+    private $files;
+    public $sourceDirectory;
 
     public abstract function importFiles( String $directory );
 
