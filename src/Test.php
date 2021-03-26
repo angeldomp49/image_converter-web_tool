@@ -94,7 +94,6 @@ class Test {
             WebpConverter::convertAll( $imgContainer, $destination );
 
             $imgContainerD = new ImgFileContainer( $destination );
-            Logger::logDump( $imgContainerD->imgFiles );
         }
         catch( Exception $e ){
             Logger::log( $e->getMessage() );

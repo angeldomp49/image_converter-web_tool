@@ -24,6 +24,7 @@ class WebpConverter {
         $imageFile->openHandler();
             Logger::log( "current file: " . $imageFile->generalFile->fileInfo->getPathname() );
             $imgTrueColor = $imageFile->handler;
+            imagepalettetotruecolor( $imgTrueColor );
             
             if( $this->isSupportedExtension( $imageFile ) ){
                 imagewebp( $imgTrueColor, $pathName );
