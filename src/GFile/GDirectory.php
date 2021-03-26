@@ -1,28 +1,16 @@
 <?php
-namespace Pixelsiete\Towebp;
+namespace MakechTec\ImageConverter\GFile;
 
-use Pixelsiete\Towebp\Interfaces\File;
-use MakechTec\Nanokit\Url\Parser;
 use \Exception;
-use Logger;
+use MakechTec\Nanokit\Url\Parser;
+use MakechTec\Nanokit\Util\Logger;
+use MakechTec\ImageConverter\GFile\GFile;
 
-class FileGenerator{
+abstract class GDirectory{
     private Array $files;
+    public String $sourceDirectory;
 
-    public function importFiles( String $directory ){
-        if( !is_dir( $directory ) ){
-            throw new Exception( "Directory not exists: " . $directory );
-        }
-
-        $fileNames = $this->importFileNamesRecursively( $directory );
-        $fileObjects = [];
-
-        foreach ($fileNames as $fileName) {
-            $fileObjects[] = new GeneralFile( $fileName );
-        }
-        
-        return $fileObjects;
-    }
+    public abstract function importFiles();
 
     public function importFileNamesRecursively( $dir, &$results = array() ) {
         $directory = Parser::removeEndChar( $dir, '/\\\\$/' );
@@ -72,5 +60,14 @@ class FileGenerator{
         }
 
         return $cleaned;
+    }
+
+    public static function createDirIfNotExists( $absPath ){
+        if( !is_dir( $absPath ) ){
+            
+            if( !mkdir( $absPath, 0777, true ) ){
+                throw new Exception( 'Failed creating directory: ' . $absPath );
+            }
+        }
     }
 }

@@ -205,4 +205,17 @@ class Parser{
         return ( preg_match( self::END_CURLY_BRACKET_REGEX, $str ) ) ? true : false;
     }
 
+    public function removeFinalSlug( $uri ){
+        if( !is_string( $uri ) ){
+            throw new Exception( "uri is not a string" );
+        }
+
+        $uriSlashes = self::equalSlashes( '/', $uri );
+        $slugs = self::slugsFromUri( $uriSlashes );
+        array_pop( $slugs );
+        $newUri = self::uriFromSlugs( $slugs );
+        $newUri = self::equalSlashes( '\\', $newUri );
+        return $newUri;
+    }
+
 }

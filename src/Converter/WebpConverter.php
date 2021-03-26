@@ -1,12 +1,15 @@
 <?php
-namespace Pixelsiete\Towebp;
-use MakechTec\Nanokit\Url\Parser;
-use MakechTec\Nanokit\Util\Logger;
+namespace MakechTec\ImageConverter\Converter;
+
 use \Exception;
 use \Throwable;
 use \Error;
+use MakechTec\Nanokit\Url\Parser;
+use MakechTec\Nanokit\Util\Logger;
+use MakechTec\ImageConverter\GFile\GDirectory;
+use MakechTec\ImageConverter\Converter\Converter;
 
-class WebpConverter {
+class WebpConverter extends Converter{
     public const FILE_EXTENSION = '.webp';
     public const NOT_SUPPORTED_EXTENSIONS = [ 'ico', 'gif' ];
 
@@ -43,31 +46,9 @@ class WebpConverter {
         return $newFileName;
     }
 
-    public function createContainerDir( $pathName ){
-        $path = $this->removeFinalSlug( $pathName );
-        $this->createDirIfNotExists( $path );
-    }
-
-    public function removeFinalSlug( $uri ){
-        if( !is_string( $uri ) ){
-            throw new Exception( "uri is not a string" );
-        }
-
-        $uriSlashes = Parser::equalSlashes( '/', $uri );
-        $slugs = Parser::slugsFromUri( $uriSlashes );
-        array_pop( $slugs );
-        $newUri = Parser::uriFromSlugs( $slugs );
-        $newUri = Parser::equalSlashes( '\\', $newUri );
-        return $newUri;
-    }
-
-    public function createDirIfNotExists( $path ){
-        if( !is_dir( $path ) ){
-            
-            if( !mkdir( $path, 0777, true ) ){
-                throw new Exception( 'Failed creating directory: ' . $path );
-            }
-        }
+    public function createContainerDir( $fileAbsPath ){
+        $dirAbsPath = Parser::removeFinalSlug( $fileAbsPath );
+        GDirectory::createDirIfNotExists( $dirAbsPath );
     }
 
     public function isSupportedExtension( $imgFile ){

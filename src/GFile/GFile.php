@@ -1,12 +1,11 @@
 <?php
-namespace Pixelsiete\Towebp;
+namespace MakechTec\ImageConverter\GFile;
 
-use Pixelsiete\Towebp\Interfaces\File;
 use \SplFileInfo;
 use \SplFileObject;
 use \Exception;
 
-class GeneralFile{
+abstract class GFile{
     public SplFileInfo $fileInfo;
     public SplFileObject $fileObject;
 
