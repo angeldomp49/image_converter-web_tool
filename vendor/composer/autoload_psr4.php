@@ -6,7 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Pixelsiete\\Towebp\\Interfaces\\' => array($baseDir . '/src/interfaces'),
-    'Pixelsiete\\Towebp\\' => array($baseDir . '/src/classes'),
     'MakechTec\\Nanokit\\' => array($vendorDir . '/makechtec/nanokit'),
+    'MakechTec\\ImageConverter\\' => array($baseDir . '/src'),
 );

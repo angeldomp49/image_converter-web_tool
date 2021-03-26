@@ -1,4 +1,5 @@
 <?php
+namespace MakechTec\ImageConverter\Testing;
 
 use MakechTec\ImageConverter\Img\ImgContainer;
 use MakechTec\ImageConverter\Converter\Webp;

@@ -7,42 +7,26 @@ namespace Composer\Autoload;
 class ComposerStaticInit29cdf5e7869d6703598cc5f92573c501
 {
     public static $prefixLengthsPsr4 = array (
-        'P' => 
-        array (
-            'Pixelsiete\\Towebp\\Interfaces\\' => 29,
-            'Pixelsiete\\Towebp\\' => 18,
-        ),
         'M' => 
         array (
             'MakechTec\\Nanokit\\' => 18,
+            'MakechTec\\ImageConverter\\' => 25,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Pixelsiete\\Towebp\\Interfaces\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/src/interfaces',
-        ),
-        'Pixelsiete\\Towebp\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/src/classes',
-        ),
         'MakechTec\\Nanokit\\' => 
         array (
             0 => __DIR__ . '/..' . '/makechtec/nanokit',
+        ),
+        'MakechTec\\ImageConverter\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
         ),
     );
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'Entry' => __DIR__ . '/../..' . '/src/Entry.php',
-        'MakechTec\\ImageConverter\\Converter\\Converter' => __DIR__ . '/../..' . '/src/Converter/Converter.php',
-        'MakechTec\\ImageConverter\\Converter\\Webp' => __DIR__ . '/../..' . '/src/Converter/Webp.php',
-        'MakechTec\\ImageConverter\\GFile\\GDirectory' => __DIR__ . '/../..' . '/src/GFile/GDirectory.php',
-        'MakechTec\\ImageConverter\\GFile\\GFile' => __DIR__ . '/../..' . '/src/GFile/GFile.php',
-        'MakechTec\\ImageConverter\\Img\\ImgContainer' => __DIR__ . '/../..' . '/src/Img/ImgContainer.php',
-        'MakechTec\\ImageConverter\\Img\\ImgFile' => __DIR__ . '/../..' . '/src/Img/ImgFile.php',
-        'Test' => __DIR__ . '/../..' . '/src/Test.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

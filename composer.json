@@ -7,9 +7,7 @@
     "autoload":{
         "psr-4": {
             "MakechTec\\Nanokit\\": "vendor/makechtec/nanokit",
-            "Pixelsiete\\Towebp\\": "src/classes",
-            "Pixelsiete\\Towebp\\Interfaces\\": "src/interfaces"
-        },
-        "classmap": ["src"]
+            "MakechTec\\ImageConverter\\":"src"
+        }
     }
 }
