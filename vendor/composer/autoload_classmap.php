@@ -8,11 +8,11 @@ $baseDir = dirname($vendorDir);
 return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'Entry' => $baseDir . '/src/Entry.php',
-    'Pixelsiete\\Towebp\\FileGenerator' => $baseDir . '/src/classes/FileGenerator.php',
-    'Pixelsiete\\Towebp\\GeneralFile' => $baseDir . '/src/classes/GeneralFile.php',
-    'Pixelsiete\\Towebp\\ImgFile' => $baseDir . '/src/classes/ImageFile.php',
-    'Pixelsiete\\Towebp\\ImgFileContainer' => $baseDir . '/src/classes/ImgFileContainer.php',
-    'Pixelsiete\\Towebp\\Interfaces\\Converter' => $baseDir . '/src/interfaces/Converter.php',
-    'Pixelsiete\\Towebp\\WebpConverter' => $baseDir . '/src/classes/WebpConverter.php',
+    'MakechTec\\ImageConverter\\Converter\\Converter' => $baseDir . '/src/Converter/Converter.php',
+    'MakechTec\\ImageConverter\\Converter\\Webp' => $baseDir . '/src/Converter/Webp.php',
+    'MakechTec\\ImageConverter\\GFile\\GDirectory' => $baseDir . '/src/GFile/GDirectory.php',
+    'MakechTec\\ImageConverter\\GFile\\GFile' => $baseDir . '/src/GFile/GFile.php',
+    'MakechTec\\ImageConverter\\Img\\ImgContainer' => $baseDir . '/src/Img/ImgContainer.php',
+    'MakechTec\\ImageConverter\\Img\\ImgFile' => $baseDir . '/src/Img/ImgFile.php',
     'Test' => $baseDir . '/src/Test.php',
 );

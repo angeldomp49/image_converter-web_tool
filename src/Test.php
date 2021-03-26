@@ -1,6 +1,7 @@
 <?php
 
-use Pixelsiete\Towebp\{ImgFileContainer, WebpConverter, FileGenerator, GeneralFile, ImgFile};
+use MakechTec\ImageConverter\Img\ImgContainer;
+use MakechTec\ImageConverter\Converter\Webp;
 use MakechTec\Nanokit\Util\Logger;
 
 class Test {
@@ -83,17 +84,16 @@ class Test {
     }
 
     public static function main(){
+        $source = "images";
+        $destination = "destination";
+
+        $source = rightPath( $source );
+        $destination = rightPath( $destination );
+
         try{
-            $source = "images";
-            $source = rightPath( $source );
-
-            $destination = "images-dist";
-            $destination = rightPath( $destination );
-
-            $imgContainer = new ImgFileContainer( $source );
-            WebpConverter::convertAll( $imgContainer, $destination );
-
-            $imgContainerD = new ImgFileContainer( $destination );
+            $container = new ImgContainer( $source );
+            $converter = new Webp();
+            $converter->convertAll( $container, $destination );
         }
         catch( Exception $e ){
             Logger::log( $e->getMessage() );

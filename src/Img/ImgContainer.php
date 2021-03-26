@@ -1,13 +1,14 @@
 <?php
 namespace MakechTec\ImageConverter\Img;
 
+use \Exception;
 use MakechTec\ImageConverter\GFile\GDirectory;
 
 class ImgContainer extends GDirectory{
 
     public function __construct( String $sourceDirectory ){
         $this->sourceDirectory = $sourceDirectory;
-        $this->importImgFiles( $this->sourceDirectory );
+        $this->importFiles( $this->sourceDirectory );
     }
 
     public function importFiles( String $directory ){

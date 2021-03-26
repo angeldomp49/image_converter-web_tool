@@ -10,7 +10,7 @@ abstract class GDirectory{
     private Array $files;
     public String $sourceDirectory;
 
-    public abstract function importFiles();
+    public abstract function importFiles( String $directory );
 
     public function importFileNamesRecursively( $dir, &$results = array() ) {
         $directory = Parser::removeEndChar( $dir, '/\\\\$/' );

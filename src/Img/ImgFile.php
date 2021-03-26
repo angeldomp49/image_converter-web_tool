@@ -5,11 +5,11 @@ use \Exception;
 use MakechTec\Nanokit\Util\Logger;
 use MakechTec\ImageConverter\GFile\GFile;
 
-class Img extends GFile{
+class ImgFile extends GFile{
     public $handler;
 
     public function __construct( String $file ){
-        super( $file );
+        parent::__construct( $file );
         $this->handler = null;
     }
 

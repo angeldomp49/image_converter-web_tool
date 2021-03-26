@@ -205,7 +205,7 @@ class Parser{
         return ( preg_match( self::END_CURLY_BRACKET_REGEX, $str ) ) ? true : false;
     }
 
-    public function removeFinalSlug( $uri ){
+    public static function removeFinalSlug( $uri ){
         if( !is_string( $uri ) ){
             throw new Exception( "uri is not a string" );
         }

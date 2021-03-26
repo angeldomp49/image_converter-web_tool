@@ -1,9 +1,9 @@
 <?php
 namespace MakechTec\ImageConverter\Converter;
 
-use MakechTec\ImageConverter\{GFile, GDirectory};
+use MakechTec\ImageConverter\Img\{ImgFile, ImgContainer};
 
 abstract class Converter{
-    public abstract function convert( GFile $imgFile, String $pathName );
-    public static abstract function convertAll( GDirectory $fileContainer, String $destinationDirectory );
+    public abstract function convert( ImgFile $imgFile, String $pathName );
+    public abstract function convertAll( ImgContainer $fileContainer, String $destinationDirectory );
 }

@@ -8,24 +8,23 @@ use MakechTec\Nanokit\Url\Parser;
 use MakechTec\Nanokit\Util\Logger;
 use MakechTec\ImageConverter\GFile\GDirectory;
 use MakechTec\ImageConverter\Converter\Converter;
+use MakechTec\ImageConverter\Img\{ImgFile,ImgContainer};
 
-class WebpConverter extends Converter{
+
+class Webp extends Converter{
     public const FILE_EXTENSION = '.webp';
     public const NOT_SUPPORTED_EXTENSIONS = [ 'ico', 'gif' ];
 
-    public static function convertAll( ImgFileContainer $imgFileContainer, String $destinationDirectory ){
-        $instance = new WebpConverter();
-
+    public function convertAll( ImgContainer $imgFileContainer, String $destinationDirectory ){
         foreach ($imgFileContainer->imgFiles as $imgFile ) {
-            $newFileName = $instance->createNewName( $imgFile, $imgFileContainer->sourceDirectory, $destinationDirectory, self::FILE_EXTENSION );
-            $instance->convert( $imgFile, $newFileName );
+            $newFileName = $this->createNewName( $imgFile, $imgFileContainer->sourceDirectory, $destinationDirectory, self::FILE_EXTENSION );
+            $this->convert( $imgFile, $newFileName );
         }
     }
 
     public function convert( ImgFile $imageFile, String $pathName ){
         $this->createContainerDir( $pathName );
         $imageFile->openHandler();
-            Logger::log( "current file: " . $imageFile->generalFile->fileInfo->getPathname() );
             $imgTrueColor = $imageFile->handler;
             imagepalettetotruecolor( $imgTrueColor );
             
@@ -33,15 +32,15 @@ class WebpConverter extends Converter{
                 imagewebp( $imgTrueColor, $pathName );
             }
             else{
-                Logger::warning( 'Image cannot be webp' . $imageFile->generalFile->fileInfo->getPathname() );
+                Logger::warning( 'Image cannot be webp' . $imageFile->fileInfo->getPathname() );
             }
 
         $imageFile->closeHandler();
     }
 
     public function createNewName( ImgFile $imgFile, String $sourceDir, String $destDir, String $newExtension){
-        $oldExtension = '.' . $imgFile->generalFile->fileInfo->getExtension();
-        $newFileName = str_replace( $sourceDir, $destDir, $imgFile->generalFile->fileInfo->getPathname() );
+        $oldExtension = '.' . $imgFile->fileInfo->getExtension();
+        $newFileName = str_replace( $sourceDir, $destDir, $imgFile->fileInfo->getPathname() );
         $newFileName = str_replace( $oldExtension, $newExtension, $newFileName );
         return $newFileName;
     }
@@ -53,7 +52,7 @@ class WebpConverter extends Converter{
 
     public function isSupportedExtension( $imgFile ){
         foreach ( self::NOT_SUPPORTED_EXTENSIONS as $notSupportedExtension ) {
-            if(strtolower( $notSupportedExtension ) == $imgFile->generalFile->fileInfo->getExtension()){
+            if(strtolower( $notSupportedExtension ) == $imgFile->fileInfo->getExtension()){
                 return false;
             }
         }
