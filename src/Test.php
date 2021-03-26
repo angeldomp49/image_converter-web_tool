@@ -1,10 +1,10 @@
 <?php
 
-use Pixelsiete\Towebp\{ImgFileContainer, WebpConverter, FileGenerator, GeneralFile};
+use Pixelsiete\Towebp\{ImgFileContainer, WebpConverter, FileGenerator, GeneralFile, ImgFile};
 use MakechTec\Nanokit\Util\Logger;
 
 class Test {
-    public static function main2(){
+    public static function main1(){
         $source = "images/src";
         $dist = "images/dist";
         $source = rightPath( $source );
@@ -15,7 +15,7 @@ class Test {
         
     }
 
-    public static function main(){
+    public static function mai3(){
         $trueSource = "images";
         $trueDest = "";
         
@@ -32,6 +32,7 @@ class Test {
                 $isOpenedHandler = $imgFile->openHandler();
                 if( $isOpenedHandler ){
                     $handlersNum++;
+                    Logger::logDump( $imgFile->handler );
                 }
                 $imgFile->closeHandler();
                 if( $imgFile->handler != null ){
@@ -46,7 +47,7 @@ class Test {
         }
     }
 
-    public static function main4(){
+    public static function main2(){
         $a = new SplFileInfo( 'C:\Users\PixelSiete\Desktop\angel\codigo\toWebp\images\src\otro\dos.jpg' );
         Logger::logDump($a);
         $f = $a->openFile();
@@ -61,5 +62,42 @@ class Test {
         //$stream2 = $g->fread( $g->getSize() );
         $stream2 = $b->read();
         Logger::log($stream2);
+    }
+
+    public static function main4(){
+        try{
+            $source = "images\apple-touch-icon-114x114.png";
+            $source = rightPath( $source );
+
+            $destination = "images-dist\uno-nuevo.webp";
+            $destination = rightPath( $destination );
+
+            $img = new ImgFile( $source );
+            $webp = new WebpConverter();
+        
+            $webp->convert( $img, $destination );
+        }
+        catch( Exception $e ){
+            Logger::log( $e->getMessage() );
+        }
+    }
+
+    public static function main(){
+        try{
+            $source = "images";
+            $source = rightPath( $source );
+
+            $destination = "images-dist";
+            $destination = rightPath( $destination );
+
+            $imgContainer = new ImgFileContainer( $source );
+            WebpConverter::convertAll( $imgContainer, $destination );
+
+            $imgContainerD = new ImgFileContainer( $destination );
+            Logger::logDump( $imgContainerD->imgFiles );
+        }
+        catch( Exception $e ){
+            Logger::log( $e->getMessage() );
+        }
     }
 }

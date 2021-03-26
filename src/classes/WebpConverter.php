@@ -1,41 +1,36 @@
 <?php
 namespace Pixelsiete\Towebp;
 use MakechTec\Nanokit\Url\Parser;
+use MakechTec\Nanokit\Util\Logger;
+use \Exception;
+use \Throwable;
+use \Error;
 
 class WebpConverter {
     public const FILE_EXTENSION = '.webp';
+    public const NOT_SUPPORTED_EXTENSIONS = [ 'ico', 'gif' ];
 
     public static function convertAll( ImgFileContainer $imgFileContainer, String $destinationDirectory ){
         $instance = new WebpConverter();
-
 
         foreach ($imgFileContainer->imgFiles as $imgFile ) {
             $newFileName = $instance->createNewName( $imgFile, $imgFileContainer->sourceDirectory, $destinationDirectory, self::FILE_EXTENSION );
             $instance->convert( $imgFile, $newFileName );
         }
     }
-/*
-    public function convert( $imageFile, $source, $dist ){
-        $this->isValidImgFile( $imageFile );
-
-        $fileExtension = '.' . $imageFile->generalFile->fileInfo->getExtension();
-
-        $filenameDist = str_replace( $source, $dist, $imageFile->generalFile->fileInfo->getPathname() );
-        $filePathDist = str_replace( $imageFile->generalFile->fileInfo->getFilename(), "", $filenameDist );
-
-        $filenameDistNewExtension = str_replace( $fileExtension, self::FILE_EXTENSION, $filenameDist );
-
-        mkdir( $filePathDist, 0777, true );
-        /////////////////at this time we dont use the export function because it do this.//////////////////////
-        imagewebp( $imageFile->handler, $filenameDistNewExtension );
-    }
-    */
 
     public function convert( ImgFile $imageFile, String $pathName ){
         $this->createContainerDir( $pathName );
         $imageFile->openHandler();
-
-        imagewebp( $imageFile->handler, $pathName );
+            Logger::log( "current file: " . $imageFile->generalFile->fileInfo->getPathname() );
+            $imgTrueColor = $imageFile->handler;
+            
+            if( $this->isSupportedExtension( $imageFile ) ){
+                imagewebp( $imgTrueColor, $pathName );
+            }
+            else{
+                Logger::warning( 'Image cannot be webp' . $imageFile->generalFile->fileInfo->getPathname() );
+            }
 
         $imageFile->closeHandler();
     }
@@ -52,19 +47,35 @@ class WebpConverter {
         $this->createDirIfNotExists( $path );
     }
 
-    public function createDirIfNotExists( $path ){
-        if( !is_dir( $path ) ){
-            mkdir( $path, 0777, true );
-        }
-    }
-
     public function removeFinalSlug( $uri ){
+        if( !is_string( $uri ) ){
+            throw new Exception( "uri is not a string" );
+        }
+
         $uriSlashes = Parser::equalSlashes( '/', $uri );
-        $slugs = Parser::slugsFromUri( $uri );
+        $slugs = Parser::slugsFromUri( $uriSlashes );
         array_pop( $slugs );
         $newUri = Parser::uriFromSlugs( $slugs );
         $newUri = Parser::equalSlashes( '\\', $newUri );
         return $newUri;
+    }
+
+    public function createDirIfNotExists( $path ){
+        if( !is_dir( $path ) ){
+            
+            if( !mkdir( $path, 0777, true ) ){
+                throw new Exception( 'Failed creating directory: ' . $path );
+            }
+        }
+    }
+
+    public function isSupportedExtension( $imgFile ){
+        foreach ( self::NOT_SUPPORTED_EXTENSIONS as $notSupportedExtension ) {
+            if(strtolower( $notSupportedExtension ) == $imgFile->generalFile->fileInfo->getExtension()){
+                return false;
+            }
+        }
+        return true;
     }
 
 }

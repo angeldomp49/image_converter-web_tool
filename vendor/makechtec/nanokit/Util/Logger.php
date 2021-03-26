@@ -13,4 +13,7 @@ class Logger{
         <p><?php echo( var_dump( $message )  ); ?></p>
         <?php
     }
+    public static function warning( $message ){
+        trigger_error( $message, E_USER_WARNING );
+    }
 }

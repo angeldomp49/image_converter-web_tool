@@ -27,10 +27,10 @@ class GeneralFile{
             $this->fileObject = $this->fileInfo->openFile();
         }
         catch( \RuntimeException $re ){
-            Throw new Exception( 'Failed to open FileObject with current permissions of: ' . $this->fileInfo->getPathname(), 1, $re );
+            throw new Exception( 'Failed to open FileObject with current permissions of: ' . $this->fileInfo->getPathname(), 1, $re );
         }
         catch( Exception $e ){
-            Throw new Exception( 'Failed to open FileObject of : ' . $this->fileInfo->getPathname() );
+            throw new Exception( 'Failed to open FileObject of : ' . $this->fileInfo->getPathname() );
         }
         unset($this->fileObject);
     }
