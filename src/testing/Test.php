@@ -85,6 +85,7 @@ class Test {
     }
 
     public static function main(){
+        Logger::log(rightPath());
         $source = "images";
         $destination = "destination";
 

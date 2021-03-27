@@ -3,3 +3,7 @@ también modificamos la clase Parser de nanokit, falta recorrer el arreglo y cre
 
 
 vamos a cambiar las capas de ejecución, el convertidor va a llamar al contenedor de archivo de imágenes y va a pedir la carpeta de entrada y la de salida, de manera que cree el contenedor y exporte las imágenes en su código.
+
+
+start
+    php -S localhost:8000 -t public

@@ -210,12 +210,27 @@ class Parser{
             throw new Exception( "uri is not a string" );
         }
 
-        $uriSlashes = self::equalSlashes( '/', $uri );
+        $uriSlashes = self::equalSlashes( Parser::SLASH, $uri );
         $slugs = self::slugsFromUri( $uriSlashes );
         array_pop( $slugs );
         $newUri = self::uriFromSlugs( $slugs );
-        $newUri = self::equalSlashes( '\\', $newUri );
+        $rightSlash = self::rightSlash();
+
+        $newUri = self::equalSlashes( $rightSlash, $newUri );
         return $newUri;
+    }
+
+    public static function rightSlash(){
+        if( preg_match( Parser::SLASH_REGEX, __DIR__ ) ){
+            $rightSlash = Parser::SLASH;
+        }
+        else if( preg_match( Parser::ANTI_SLASH_REGEX, __DIR__ ) ){
+            $rightSlash = Parser::ANTI_SLASH;
+        }
+        else{
+            throw new Exception( "the slash or antislash is not recognized" );
+        }
+        return $rightSlash;
     }
 
 }
