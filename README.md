@@ -1,9 +1,21 @@
-ya tenemos la funcion que nos devuelve un array de los nombres de archivos de directorios y subdirectorios, esto con sus rutas absolutas,
-también modificamos la clase Parser de nanokit, falta recorrer el arreglo y crear una copia en webp de cada archivo en la carpeta de salida, tambi+en falta renombrar la clase nameparser y organizar el código además de integrar los cambios hecho en nanokit
+# Image Converter #
 
 
-vamos a cambiar las capas de ejecución, el convertidor va a llamar al contenedor de archivo de imágenes y va a pedir la carpeta de entrada y la de salida, de manera que cree el contenedor y exporte las imágenes en su código.
+## Converter ##
+
+This project use the Strategy Pattern because there is a "Converter" abstract class and you can create a new converter for another image format 
+extend it. An example is the Webp converter class.
+
+## GDirectory ##
+The GDirectory abstract class provide some functions for scan an specified directory and read its files.
+
+## GFile ##
+This class provide an interface to handle files and its content.
+
+## ImgContainer and ImgFile ##
+Same functionality for GDirectory and GFile but more specific for image files
 
 
-start
-    php -S localhost:8000 -t public
+## Usage ##
+Inside the testing directory is the main function and another testing codes. 
+The goal of this project is create a library to convert image files from one or more extensions to a specified extension
