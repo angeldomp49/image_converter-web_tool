@@ -1,1 +1,4 @@
-
+/vendor
+/tests
+.env
+composer.json-lock
