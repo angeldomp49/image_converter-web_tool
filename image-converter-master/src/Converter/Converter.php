@@ -1,5 +1,5 @@
 <?php
-namespace App\Converters;
+namespace MakechTec\ImageConverter\Converter;
 
 use MakechTec\ImageConverter\Img\{ImgFile, ImgContainer};
 

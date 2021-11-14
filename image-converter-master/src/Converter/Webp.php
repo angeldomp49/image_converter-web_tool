@@ -1,11 +1,15 @@
 <?php
-namespace App\Converters;
+namespace MakechTec\ImageConverter\Converter;
 
+use \Exception;
+use \Throwable;
+use \Error;
 use MakechTec\Nanokit\Url\Parser;
 use MakechTec\Nanokit\Util\Logger;
 use MakechTec\ImageConverter\GFile\GDirectory;
 use MakechTec\ImageConverter\Converter\Converter;
 use MakechTec\ImageConverter\Img\{ImgFile,ImgContainer};
+
 
 class Webp extends Converter{
     public const FILE_EXTENSION = '.webp';
