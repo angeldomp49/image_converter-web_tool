@@ -15,7 +15,7 @@ class CreateConversionsTable extends Migration
     {
         Schema::create('conversions', function (Blueprint $table) {
             $table->id();
-            $table->float('percentage', 3, 0)->default(0);
+            $table->float('percentage', 3, 2)->default(0);
             $table->integer('to_convert')->default(0);
             $table->integer('success')->default(0);
             $table->integer('errors')->default(0);
