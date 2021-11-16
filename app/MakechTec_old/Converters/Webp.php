@@ -3,15 +3,14 @@ namespace App\MakechTec\Converters;
 
 use App\MakechTec\Converters\Converter;
 use App\MakechTec\ImgFile;
-use Illuminate\Support\Facades\Storage;
 
 class Webp extends Converter{
-    public const FILE_EXTENSION = '.webp';
+    public $extension = 'webp';
 
     public function convertAll( Array $imgFiles, String $destinationDirectory ){
-        foreach ($imgFileContainer->imgFiles as $imgFile ) {
-            $newFileName = $this->createNewName( $imgFile, $imgFileContainer->sourceDirectory, $destinationDirectory, self::FILE_EXTENSION );
-            $this->convert( $imgFile, $newFileName );
+        foreach ($imgFiles as $imgFile ) {
+            $targetName = $destinationDirectory . '/' . $this->changeNameExtension($imgFile);
+            $this->convert( $imgFile, $targetName );
         }
     }
 

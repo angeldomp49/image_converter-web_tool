@@ -10,14 +10,18 @@ use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Crypt;
 
-class UploadController extends Controller
-{
+class UploadController extends Controller{
+
+
     public function form(){
         $submit = Conversion::create();
         return view('upload_form', compact('submit'));
     }
 
     public function uploadImage(Request $request){
+
+        $imgFile = 
+
         $image = Image::create([
             'submit_id' => $request->submit_id,
             'name' => $this->generateName($request->image->extension()),
@@ -44,14 +48,6 @@ class UploadController extends Controller
         //start the conversion in a new thread
         //add code here
         return redirect()->route('wait');
-    }
-
-    public function generateName( $extension ){
-        return 'image_' . (new DateTime())->getTimestamp() . '.' . $extension;
-    }
-
-    public function base64Content( UploadedFile $file){
-        return base64_encode( $file->getContent() );
     }
 
     public function genRoute( $encrypted_id ){

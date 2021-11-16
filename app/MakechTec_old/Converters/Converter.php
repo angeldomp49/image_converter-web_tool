@@ -2,6 +2,7 @@
 namespace App\MakechTec\Converters;
 
 use App\MakechTec\ImgFile;
+use SplFileObject;
 
 abstract class Converter{
     public abstract function convert( ImgFile $imgFile, String $destinationDirectory );
@@ -16,4 +17,18 @@ abstract class Converter{
         }
         return true;
     }
+
+    public function changeNameExtension( SplFileObject $file) : String {
+
+        $regexExtension = '/\.'. $file->getExtension() .'$/';
+        $newExtensionDot = '.' . $this->targetExtension();
+
+        return preg_replace( $regexExtension, $newExtensionDot, $file->getBasename() );
+    }
+
+    public function targetExtension(){
+        return ( new (get_called_class()))->extension ?? null;
+    }
+
+    
 }
