@@ -1,4 +1,6 @@
-<?php 
+<?php
+
+use App\Http\Controllers\PruebaController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('prueba')->name('prueba.')->group(function(){
@@ -14,4 +16,6 @@ Route::prefix('prueba')->name('prueba.')->group(function(){
     Route::get('waiting', function(){
         return view('waiting');
     });
+
+    Route::get( '/image', [ PruebaController::class, 'image' ] );
 });

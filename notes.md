@@ -1,0 +1,1 @@
+"MakechTec\\ImageConverter\\": "vendor/makechtec/image-converter/src"

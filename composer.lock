@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d4842c22e789d247c4b660e69490545f",
+    "content-hash": "caa03d9c6587b0aaa5e84d4497dbd4cc",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1663,6 +1663,45 @@
                 }
             ],
             "time": "2021-09-25T08:23:19+00:00"
+        },
+        {
+            "name": "makechtec/image-converter",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/angeldomp49/image-converter-lib.git",
+                "reference": "348cf824460f956d7132c5ccf28b55afd4f766a5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/angeldomp49/image-converter-lib/zipball/348cf824460f956d7132c5ccf28b55afd4f766a5",
+                "reference": "348cf824460f956d7132c5ccf28b55afd4f766a5",
+                "shasum": ""
+            },
+            "require": {
+                "ext-gd": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MakechTec\\ImageConverter\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Convert any image type to webp version unless .ico",
+            "keywords": [
+                "Webp",
+                "converter",
+                "image"
+            ],
+            "support": {
+                "issues": "https://github.com/angeldomp49/image-converter-lib/issues",
+                "source": "https://github.com/angeldomp49/image-converter-lib/tree/1.0.0"
+            },
+            "time": "2021-11-20T21:35:23+00:00"
         },
         {
             "name": "monolog/monolog",
