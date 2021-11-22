@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UploadController;
 use App\Http\Controllers\WaitController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/upload_images', [ UploadController::class, 'form' ]);
 
 Route::get('/status/{conversion}', [ WaitController::class, 'statusDispatcher' ]);
 
