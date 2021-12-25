@@ -11,7 +11,53 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js([
+const sourceDirectory = './resources';
+const distDirectory = './public/assets';
+const bower_components = './bower_components';
+
+const jsSources = [
     'resources/js/checkConversion.js'
-], 'public/assets/js/app.min.js')
-.sourceMaps(true);
+];
+
+const stylesSources = [
+    '/scss/style.css'
+];
+
+const assets = [
+    '/img',
+    '/json',
+    '/fonts'
+];
+
+const vendors = [
+    {
+        'name': 'bootstrap', 
+        'source': {
+            'css': [
+                bower_components+'/bootstrap/dist/bootstrap.min'
+            ],
+        }
+    }
+];
+
+mix.combine(jsSources, distDirectory+'/js/app.min.js')
+    .sourceMaps();
+
+copyAssetsRecursively(assets);
+
+
+
+
+
+function copyAssetsRecursively( assets ){
+    assets.map((asset) => {
+        copyAssets(asset);
+    });
+}
+
+function copyAssets(source, dest = ''){
+    if(dest == ''){
+        dest = source;
+    }
+    mix.copyDirectory(sourceDirectory+source, distDirectory+dest);
+}

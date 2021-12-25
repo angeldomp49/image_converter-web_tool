@@ -16,7 +16,18 @@
         "postcss": "^8.1.14"
     },
     "dependencies": {
+        "animate.css": "^4.1.1",
+        "awesome-bootstrap-checkbox": "^1.0.1",
+        "bootstrap-scss": "^4.6.1",
+        "bourbon": "^7.0.0",
+        "font-awesome": "^4.7.0",
         "jquery": "^3.6.0",
-        "rxjs": "^7.4.0"
+        "lightgallery": "^2.3.0",
+        "material-design-iconic-font": "^2.2.0",
+        "owl.carousel": "^2.3.4",
+        "rxjs": "^7.4.0",
+        "simple-line-icons": "^2.5.5",
+        "switchery": "^0.0.2",
+        "themify-icons": "^1.0.0"
     }
 }

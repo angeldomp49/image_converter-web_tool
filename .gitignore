@@ -1,6 +1,7 @@
 /node_modules
 /public/hot
 /public/storage
+/bower_components
 /storage/*.key
 /vendor
 .env
